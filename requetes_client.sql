@@ -28,6 +28,11 @@ FROM magasin NATURAL JOIN propose
 WHERE libelle = :libelle
 ORDER BY prix_unitaire ASC;
 
+-- get projets
+SELECT id_projet, nom_projet
+FROM projet
+WHERE num_client = :num_client;
+
 -- Add composant to projet
 INSERT INTO contient (id_projet, libelle, nb_composants)
 VALUES (:id_projet, :libelle, :nb_composants);
