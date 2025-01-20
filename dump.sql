@@ -21,7 +21,8 @@ CREATE TABLE client (
     num_client serial PRIMARY KEY,
     nom_client varchar(50),
     prenom_client varchar(50),
-    adresse_email_client varchar(50) UNIQUE
+    adresse_email_client varchar(50) UNIQUE,
+    mot_de_passe_client varchar(100)
 );
 
 CREATE TABLE projet (
@@ -33,7 +34,8 @@ CREATE TABLE projet (
 CREATE TABLE personnel (
     id_personnel serial PRIMARY KEY,
     nom_personnel varchar(50),
-    prenom_personnel varchar(50)
+    prenom_personnel varchar(50),
+    mot_de_passe_personnel varchar(100)
 );
 
 CREATE TABLE magasin (
@@ -101,17 +103,17 @@ INSERT INTO composant_electrique VALUES
  SATA 6Gb/s M.2 PCI-E NVMe - USB 3.0 - 
 2x PCI-Express 3.0 16x', 'ASRock');
 
-INSERT INTO client(nom_client, prenom_client, adresse_email_client) VALUES 
-('Kita', 'Etienne', 'etienne@mail.com'), 
-('Gon', 'Freecss', 'Gon@strong.com'), ('Zoldik', 'Killua', 'Zoldyck@assasin.com');
+INSERT INTO client(nom_client, prenom_client, adresse_email_client, mot_de_passe_client) VALUES 
+('Kita', 'Etienne', 'etienne@mail.com', '123456'), 
+('Gon', 'Freecss', 'Gon@strong.com'), ('Zoldik', 'Killua', 'Zoldyck@assasin.com', 'GonMDP');
 
 INSERT INTO projet(nom_projet, num_client) VALUES 
 ('Chimera Ant Desctruction', 2), 
 ('PC Building', 3);
 
-INSERT INTO personnel(nom_personnel, prenom_personnel) VALUES 
-('Freecss', 'Ging'),
- ('Monkey.D', 'Luffy');
+INSERT INTO personnel(nom_personnel, prenom_personnel, mot_de_passe_personnel) VALUES 
+('Freecss', 'Ging', '123456'),
+ ('Monkey.D', 'Luffy', 'LuffyMDP');
 
 INSERT INTO magasin(adresse_magasin, nom_magasin, num_telephone_magasin, gerant) VALUES 
 ('50 rue Carthage', 'Cabsa', '07877777779', 1), 
