@@ -33,7 +33,7 @@ CREATE TABLE projet (
 );
 
 CREATE TABLE personnel (
-    id_personnel serial PRIMARY KEY,
+    id_personnel int PRIMARY KEY,
     nom_personnel varchar(50) NOT NULL,
     prenom_personnel varchar(50) NOT NULL,
     mot_de_passe     varchar(50) NOT NULL
@@ -128,9 +128,9 @@ INSERT INTO projet(nom_projet, num_client) VALUES
 
 ---Filling table personnel :
 
-INSERT INTO personnel(nom_personnel, prenom_personnel, mot_de_passe) VALUES 
-('Freecss', 'Ging', '084fe8aecafea8b2f84'),
- ('Monkey.D', 'Luffy', '084fe8afufa8b2f84');
+INSERT INTO personnel VALUES 
+(1, 'Freecss', 'Ging', '084fe8aecafea8b2f84'),
+(2, 'Monkey.D', 'Luffy', '084fe8afufa8b2f84');
 
 ---Filling table magasin :
 
@@ -159,7 +159,7 @@ INSERT INTO compose VALUES
 ---Filling table travaille :
 
 INSERT INTO travaille VALUES
-(1, 1 , '18-03-1750'),
+(1, 2 , '18-03-1750'),
 (1, 1 , '18-03-2022' ),
 (1, 1 , '10-01-2025'),
 (2, 2 , '10-01-2025');
