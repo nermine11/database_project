@@ -33,6 +33,11 @@ SELECT id_projet, nom_projet
 FROM projet
 WHERE num_client = :num_client;
 
+-- get projets avec composant
+SELECT id_projet, nom_projet, nb_composants
+FROM projet NATURAL JOIN contient
+WHERE libelle = :libelle AND num_client = :num_client;
+
 -- Add composant to projet
 INSERT INTO contient (id_projet, libelle, nb_composants)
 VALUES (:id_projet, :libelle, :nb_composants);
