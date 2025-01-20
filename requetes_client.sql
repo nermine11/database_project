@@ -1,5 +1,5 @@
 -- connexion_client
-SELECT num_client
+SELECT num_client, nom_client, prenom_client
 FROM client
 WHERE email_client = :email_client AND mot_de_passe_client = :mot_de_passe_client;
 
