@@ -28,6 +28,8 @@ CREATE TABLE projet (
     id_projet serial PRIMARY KEY,
     nom_projet varchar(40) NOT NULL,
     num_client int REFERENCES client(num_client)
+    ON DELETE CASCADE ON UPDATE CASCADE
+
 );
 
 CREATE TABLE personnel (
@@ -43,28 +45,36 @@ CREATE TABLE magasin (
     nom_magasin varchar(20) NOT NULL,
     num_telephone_magasin varchar(50) UNIQUE,
     gerant int REFERENCES personnel(id_personnel)
+    ON DELETE SET NULL ON UPDATE CASCADE
 );
 
 CREATE TABLE transaction (
     id_transaction serial PRIMARY KEY,
     date_transaction date,
-    num_client int REFERENCES client(num_client),
-    num_magasin int REFERENCES magasin(num_magasin),
-    id_personnel int REFERENCES personnel(id_personnel)
+    num_client int REFERENCES client(num_client) 
+    ON DELETE CASCADE ON UPDATE CASCADE,
+    num_magasin int REFERENCES magasin(num_magasin) 
+    ON DELETE CASCADE ON UPDATE CASCADE,
+    id_personnel int REFERENCES personnel(id_personnel) 
+    ON DELETE SET NULL ON UPDATE CASCADE
 );
 
 
 CREATE TABLE contient(
-    id_projet serial references projet(id_projet),
-    libelle varchar(20) references  composant_electrique(libelle),
+    id_projet serial references projet(id_projet)
+    ON DELETE CASCADE ON UPDATE CASCADE,
+    libelle varchar(20) references  composant_electrique(libelle)
+    ON DELETE SET NULL ON UPDATE CASCADE,
     nb_composants int,
     primary key(id_projet, libelle)
 );
 
 
 CREATE TABLE compose (
-    libelle varchar(20) references  composant_electrique(libelle),
-    id_transaction serial references transaction(id_transaction),
+    libelle varchar(20) references  composant_electrique(libelle)
+    ON DELETE CASCADE ON UPDATE CASCADE,
+    id_transaction serial references transaction(id_transaction)
+    ON DELETE CASCADE ON UPDATE CASCADE,
     quantite_produit int,
     prix_unitaire_initial real,
     primary key (libelle, id_transaction)
@@ -73,8 +83,10 @@ CREATE TABLE compose (
 
 
 CREATE TABLE travaille (
-    num_magasin serial references  magasin(num_magasin),
-    id_personnel serial references personnel(id_personnel),
+    num_magasin serial references  magasin(num_magasin)
+    ON DELETE CASCADE ON UPDATE CASCADE,
+    id_personnel serial references personnel(id_personnel)
+    ON DELETE CASCADE ON UPDATE CASCADE,
     jour date,
     primary key(num_magasin, id_personnel, jour)
 );
@@ -82,8 +94,10 @@ CREATE TABLE travaille (
 
 
 CREATE TABLE propose(
-    libelle varchar(20) references  composant_electrique(libelle),
-    num_magasin serial references  magasin(num_magasin),
+    libelle varchar(20) references  composant_electrique(libelle)
+    ON DELETE CASCADE ON UPDATE CASCADE,
+    num_magasin serial references  magasin(num_magasin)
+    ON DELETE CASCADE ON UPDATE CASCADE,
     prix_unitaire real,
     primary key (libelle, num_magasin)
 );
