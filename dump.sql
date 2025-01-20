@@ -12,7 +12,7 @@ DROP TABLE IF EXISTS propose CASCADE;
 
 CREATE TABLE composant_electrique (
     libelle varchar(20) PRIMARY KEY,
-    nom_composant varchar(30) NOT NULL,
+    nom_composant varchar(30) NOT NULL UNIQUE,
     description text,
     marque varchar(30)
 );
@@ -41,7 +41,7 @@ CREATE TABLE magasin (
     num_magasin serial PRIMARY KEY,
     adresse_magasin varchar(50),
     nom_magasin varchar(20) NOT NULL,
-    num_telephone_magasin varchar(50),
+    num_telephone_magasin varchar(50) UNIQUE,
     gerant int REFERENCES personnel(id_personnel)
 );
 
