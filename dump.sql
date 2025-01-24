@@ -21,7 +21,8 @@ CREATE TABLE client (
     num_client serial PRIMARY KEY,
     nom_client varchar(50) NOT NULL,
     prenom_client varchar(50) NOT NULL,
-    adresse_email_client varchar(50) UNIQUE
+    adresse_email_client varchar(50) UNIQUE,
+    mot_de_passe_client varchar(50) NOT NULL
 );
 
 CREATE TABLE projet (
@@ -36,7 +37,7 @@ CREATE TABLE personnel (
     id_personnel int PRIMARY KEY,
     nom_personnel varchar(50) NOT NULL,
     prenom_personnel varchar(50) NOT NULL,
-    mot_de_passe     varchar(50) NOT NULL
+    mot_de_passe_personnel     varchar(50) NOT NULL
 );
 
 CREATE TABLE magasin (
