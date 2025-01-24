@@ -1,5 +1,5 @@
 -- connexion_client
-SELECT num_client
+SELECT num_client, nom_client, prenom_client
 FROM client
 WHERE email_client = :email_client AND mot_de_passe_client = :mot_de_passe_client;
 
@@ -27,6 +27,16 @@ SELECT num_magasin, nom_magasin, adresse_magasin, prix_unitaire
 FROM magasin NATURAL JOIN propose
 WHERE libelle = :libelle
 ORDER BY prix_unitaire ASC;
+
+-- get projets
+SELECT id_projet, nom_projet
+FROM projet
+WHERE num_client = :num_client;
+
+-- get projets avec composant
+SELECT id_projet, nom_projet, nb_composants
+FROM projet NATURAL JOIN contient
+WHERE libelle = :libelle AND num_client = :num_client;
 
 -- Add composant to projet
 INSERT INTO contient (id_projet, libelle, nb_composants)
