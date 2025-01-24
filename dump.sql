@@ -37,7 +37,7 @@ CREATE TABLE personnel (
     id_personnel int PRIMARY KEY,
     nom_personnel varchar(50) NOT NULL,
     prenom_personnel varchar(50) NOT NULL,
-    mot_de_passe_personnel     varchar(50) NOT NULL
+    mot_de_passe_personnel  varchar(50) NOT NULL
 );
 
 CREATE TABLE magasin (
